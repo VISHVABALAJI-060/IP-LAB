@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sum and Product of an Array</title>
+</head>
+<body><center>
+<h2>Enter numbers separated by commas:</h2>
+<input type="text" id="inputNumbers">
+<button onclick="calculate()">Calculate</button>
+<p id="result"></p></center>
+<script>
+  function calculate() {
+    const inputNumbers = document.getElementById("inputNumbers").value;
+    const numbers = inputNumbers.split(",").map(Number);
+
+    const sum = computeSum(numbers);
+    const product = computeProduct(numbers);
+
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = `Sum: ${sum}, Product: ${product}`;
+  }
+  function computeSum(array) {
+    return array.reduce((sum, num) => sum + num, 0);
+  }
+  function computeProduct(array) {
+    return array.reduce((product, num) => product * num, 1);
+  }
+</script>
+</body>
+</html>

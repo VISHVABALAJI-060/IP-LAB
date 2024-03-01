@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Convert Amount to Coins</title>
+</head>
+<body><center>
+<h2>Convert Amount to Coins</h2>
+<p>Enter the amount:</p>
+<input type="number" id="amountInput" placeholder="Enter amount">
+<button onclick="convertToCoins()">Convert</button>
+<p id="result"></p></center>
+<script>
+  function convertToCoins() {
+    const amount = parseInt(document.getElementById("amountInput").value);
+    let remainingAmount = amount;
+    let coinList = [];
+    const denominations = [25, 10, 5, 2, 1];
+    for (let i = 0; i < denominations.length; i++) {
+      const coinValue = denominations[i];
+      const numCoins = Math.floor(remainingAmount / coinValue);
+      for (let j = 0; j < numCoins; j++) {
+        coinList.push(coinValue);
+      }
+      remainingAmount %= coinValue;
+    }
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = "Coins: " + coinList.join(", ");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Capitalizing the First Letter</title>
+</head>
+<body><center>
+<h2>Enter a string to capitalize its first letter:</h2>
+<input type="text" id="inputString" placeholder="Enter a string">
+<button onclick="capitalizeFirstLetter()">Capitalize First Letter</button>
+<p id="result"></p></center>
+<script>
+  function capitalizeFirstLetter() {
+    const inputString = document.getElementById("inputString").value;
+    const resultElement = document.getElementById("result");
+    if (inputString.trim() === "") {
+      resultElement.textContent = "Please enter a valid string.";
+      return;
+    }
+    const capitalizedString = inputString.charAt(0).toUpperCase() + inputString.slice(1);
+    resultElement.textContent = `Capitalized String: ${capitalizedString}`;
+  }
+</script>
+</body>
+</html>

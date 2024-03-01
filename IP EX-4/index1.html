@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Car Prices</title>
+<style>
+  table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+<table id="carTable">
+  <tr>
+    <th>Car Model</th>
+    <th>Price ($)</th>
+  </tr>
+</table>
+<script>
+  const cars = [
+    { model: "Toyota Camry", price: 25000 },
+    { model: "Honda Civic", price: 22000 },
+    { model: "Ford Mustang", price: 35000 },
+    { model: "Tesla Model 3", price: 45000 }
+  ];
+  cars.sort((a, b) => a.price - b.price);
+  const table = document.getElementById("carTable");
+  cars.forEach(car => {
+    const row = table.insertRow(-1);
+    const modelCell = row.insertCell(0);
+    const priceCell = row.insertCell(1);
+    modelCell.textContent = car.model;
+    priceCell.textContent = car.price;
+  });
+</script>
+</body>
+</html>
