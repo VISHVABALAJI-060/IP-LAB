@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript Form Validation</title>
+    <style>
+      body {
+        background-color: lightblue;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+      .required {
+        color: red;
+      }
+      .errorMsg {
+        color: red;
+      }
+      .errorBox {
+        border: 2px solid red;
+      }
+      table {
+        border: 0;
+        width: 100%;
+      }
+      td {
+        padding: 10px;
+      }
+      #nm, #ad,#zp,#cn,#gn,#pr,#pwd,#ph,#pr,#pwv,#em,#cn {
+        border-style: groove;
+        box-shadow: 0px 5px 10px grey;
+      }
+      .button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition-duration: 0.4s;
+      }
+      .button:hover {
+        background-color: #f70909;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <center><h2>JavaScript Form Validation</h2></center>
+      <form id="formTest" method="get" action="processData">
+        <table>
+          <tr>
+            <td>
+              <label for="nm">Name<span class="required">*</span></label>
+            </td>
+            <td><input type="text" id="nm" name="name" /></td>
+            <td id="elmNameError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td><label for="ad">Address</label></td>
+            <td><input type="text" id="ad" name="address" /></td>
+            <td id="elmAddressError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="zp">Zip Code<span class="required">*</span></label>
+            </td>
+            <td><input type="text" id="zp" name="zipcode" /></td>
+            <td id="elmZipcodeError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Country<span class="required">*</span></td>
+            <td>
+              <select id="cn" name="country">
+                <option value="" selected>Please select...</option>
+                <option value="AA">India</option>
+                <option value="BB">US</option>
+                <option value="CC">China</option>
+              </select>
+            </td>
+            <td id="elmCountryError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Gender<span class="required">*</span></td>
+            <td>
+              <label ><input id="gn" type="radio" name="gender" value="m"/>Male</label>
+              <label
+                ><input id="gn" type="radio" name="gender" value="f"/>Female</label
+              >
+            </td>
+            <td id="elmGenderError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Preferences<span class="required">*</span></td>
+            <td>
+              <label><input type="checkbox" name="color" value="r" />Red</label>
+              <label
+                ><input type="checkbox" name="color" value="g" />Green</label
+              >
+              <label
+                ><input type="checkbox" name="color" value="b" />Blue</label
+              >
+            </td>
+            <td id="elmColorError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="ph">Phone<span class="required">*</span></label>
+            </td>
+            <td><input type="text" id="ph" name="phone" /></td>
+            <td id="elmPhoneError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="em">Email<span class="required">*</span></label>
+            </td>
+            <td><input type="text" id="em" name="email" /></td>
+            <td id="elmEmailError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="pwd"
+                >Password (6-8 characters)<span class="required">*</span></label
+              >
+            </td>
+            <td><input type="password" id="pwd" name="password" /></td>
+            <td id="elmPasswordError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="pwv"
+                >Verify Password<span class="required">*</span></label
+              >
+            </td>
+            <td><input type="password" id="pwv" name="pwVerified" /></td>
+            <td id="elmPWVerifiedError" class="errorMsg">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>
+              <input type="submit" value="SEND" id="sub" class="button" />&nbsp;
+              <input type="reset" value="CLEAR" id="rst" class="button" />
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <script>
+      document.getElementById("formTest").addEventListener("submit", function (event) {
+          var name = document.getElementById("nm").value.trim();
+          var address = document.getElementById("ad").value.trim();
+          var zipcode = document.getElementById("zp").value.trim();
+          var country = document.getElementById("cn").value.trim();
+          var gender = document.querySelector('input[name="gender"]:checked');
+          var preferences = document.querySelectorAll('input[name="color"]:checked');
+          var phone = document.getElementById("ph").value.trim();
+          var email = document.getElementById("em").value.trim();
+          var password = document.getElementById("pwd").value.trim();
+          var pwVerified = document.getElementById("pwv").value.trim();
+          var nameError = document.getElementById("elmNameError");
+          var addressError = document.getElementById("elmAddressError");
+          var zipcodeError = document.getElementById("elmZipcodeError");
+          var countryError = document.getElementById("elmCountryError");
+          var genderError = document.getElementById("elmGenderError");
+          var colorError = document.getElementById("elmColorError");
+          var phoneError = document.getElementById("elmPhoneError");
+          var emailError = document.getElementById("elmEmailError");
+          var passwordError = document.getElementById("elmPasswordError");
+          var pwVerifiedError = document.getElementById("elmPWVerifiedError");
+          if (name === "") {
+            nameError.innerHTML = "Please enter your name!";
+            event.preventDefault();
+          } else {
+            nameError.innerHTML = "&nbsp;";
+          }
+          if (address === "") {
+            addressError.innerHTML = "Please enter your address!";
+            event.preventDefault();
+          } else {
+            addressError.innerHTML = "&nbsp;";
+          }
+          if (zipcode === "") {
+            zipcodeError.innerHTML = "Please enter your zip code!";
+            event.preventDefault();
+          } else if (!/^\d+$/.test(zipcode)) {
+            zipcodeError.innerHTML = "Zip code should contain only numbers!";
+            event.preventDefault();
+          } else {
+            zipcodeError.innerHTML = "&nbsp;";
+          }
+          if (country === "") {
+            countryError.innerHTML = "Please select your country!";
+            event.preventDefault();
+          } else {
+            countryError.innerHTML = "&nbsp;";
+          }
+          if (!gender) {
+            genderError.innerHTML = "Please select your gender!";
+            event.preventDefault();
+          } else {
+            genderError.innerHTML = "&nbsp;";
+          }
+          if (preferences.length === 0) {
+            colorError.innerHTML = "Please select at least one preference!";
+            event.preventDefault();
+          } else {
+            colorError.innerHTML = "&nbsp;";
+          }
+          if (phone === "") {
+            phoneError.innerHTML = "Please enter your phone number!";
+            event.preventDefault();
+          } else if (!/^\d{10}$/.test(phone)) {
+            phoneError.innerHTML =
+              "Please enter a valid 10-digit phone number!";
+            event.preventDefault();
+          } else {
+            phoneError.innerHTML = "&nbsp;";
+          }
+          if (email === "") {
+            emailError.innerHTML = "Please enter your email!";
+            event.preventDefault();
+          } else if (!email.endsWith("@gmail.com")) {
+            emailError.innerHTML = "Please enter a valid Gmail address!";
+            event.preventDefault();
+          } else {
+            emailError.innerHTML = "&nbsp;";
+          }
+          if (password === "") {
+            passwordError.innerHTML = "Please enter your password!";
+            event.preventDefault();
+          } else if (password.length < 6 || password.length > 8) {
+            passwordError.innerHTML =
+              "Password should be between 6 to 8 characters!";
+            event.preventDefault();
+          } else {
+            passwordError.innerHTML = "&nbsp;";
+          }
+          if (pwVerified === "") {
+            pwVerifiedError.innerHTML = "Please verify your password!";
+            event.preventDefault();
+          } else if (password !== pwVerified) {
+            pwVerifiedError.innerHTML = "Passwords do not match!";
+            event.preventDefault();
+          } else {
+            pwVerifiedError.innerHTML = "&nbsp;";
+          }
+        });
+    </script>
+  </body>
+</html>
