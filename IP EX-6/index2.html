@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Occurrence Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            color: #333;
+        }
+        #count {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #count:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <center><h1>Word Occurrence Counter</h1>
+    <input id="sentence" type="text" placeholder="Enter a sentence" style="width: 100%; padding: 10px; margin: 10px 0;">
+    <input id="word" type="text" placeholder="Enter a word" style="width: 100%; padding: 10px; margin: 10px 0;">
+    <button id="count">Count Occurrences</button>
+    <p id="result"></p></center>
+    <script>
+        $(document).ready(function() {
+            $('#count').click(function() {
+                var sentence = $('#sentence').val();
+                var word = $('#word').val();
+                var count = (sentence.match(new RegExp("\\b" + word + "\\b", "gi")) || []).length;
+                $('#result').text("The word '" + word + "' occurs " + count + " times in the sentence.");
+            });
+        });
+    </script>
+</body>
+</html>

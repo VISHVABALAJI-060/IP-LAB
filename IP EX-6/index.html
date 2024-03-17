@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Random List Item Generator</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  h1 {
+    text-align: center;
+  }
+  #list-container {
+    list-style-type: none;
+  }
+  .list-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  #add-item-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #add-item-btn:hover {
+    background-color: #0056b3; 
+  }
+</style>
+</head>
+<body>
+  <h1>Random List Item Generator</h1>
+  <button id="add-item-btn">Add Random Item</button>
+  <ul id="list-container"></ul>
+  <script>
+    $(document).ready(function() {
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function getRandomColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+      }
+      $('#add-item-btn').click(function() {
+        var list = $('#list-container');
+        var newItem = $('<li>').addClass('list-item');
+        var randomNumber = getRandomNumber(1, 10);
+        newItem.text(randomNumber);
+        newItem.css('background-color', getRandomColor());
+        list.append(newItem);
+      });
+    });
+  </script>
+</body>
+</html>
