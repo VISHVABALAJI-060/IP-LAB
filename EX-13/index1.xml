@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="index.xsl" ?>
+
+<products>
+    <product>
+        <name>Laptop</name>
+        <category>Electronics</category>
+        <price>800</price>
+        <available>yes</available>
+    </product>
+    <product>
+        <name>T-shirt</name>
+        <category>Clothing</category>
+        <price>20</price>
+        <available>yes</available>
+    </product>
+    <product>
+        <name>Headphones</name>
+        <category>Electronics</category>
+        <price>60</price>
+        <available>yes</available>
+    </product>
+        <product>
+        <name>Watch</name>
+        <category>Accessories</category>
+        <price>120</price>
+        <available>no</available>
+    </product>
+</products>
+
